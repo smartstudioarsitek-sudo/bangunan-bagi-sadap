@@ -1,9 +1,10 @@
 # app.py
+
 import streamlit as st
 import pandas as pd
 # Import modul buatan kita sendiri
-from modules import hidrolika as hydro
-from modules import visualisasi as vis
+import hidrolika as hydro
+import visualisasi as vis
 
 st.set_page_config(page_title="Desain Bangunan Irigasi", layout="wide")
 
@@ -44,4 +45,5 @@ elif tipe == "Bangunan Bagi":
     if seimbang:
         st.success("Neraca Air: OK")
     else:
+
         st.error(f"Neraca Air: SELISIH {selisih:.3f} m³/det")
