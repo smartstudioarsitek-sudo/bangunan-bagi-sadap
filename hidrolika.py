@@ -63,4 +63,29 @@ def cek_neraca_air(Q_masuk, list_Q_keluar):
     seimbang = abs(selisih) < 0.001
     return seimbang, total_keluar, selisih
 
+# hidrolika.py
+import math
+
+# ... (kode fungsi romijn yang lama biarkan saja) ...
+
+def hitung_bukaan_sorong_z(Q, b, z, C=0.8, g=9.81):
+    """
+    Menghitung bukaan pintu (a) berdasarkan Beda Tinggi Tekan (z).
+    Sesuai Gambar Manual Kakak (Rumus Orifice Tenggelam).
+    
+    Rumus: a = Q / (C * b * sqrt(2 * g * z))
+    """
+    if z <= 0: return 0
+    
+    akar_2gz = math.sqrt(2 * g * z)
+    penyebut = C * b * akar_2gz
+    
+    if penyebut == 0: return 0
+    
+    a = Q / penyebut
+    return a
+
+# ... (fungsi cek_neraca_air biarkan ada di bawah) ...
+
+
 
